@@ -1,7 +1,8 @@
-package dev.haenara.apkdownstall.catless
+package dev.haenara.catless.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import dev.haenara.catless.R
 
 class CatlessMainActivity : AppCompatActivity() {
     // TODO define super class 'Basic Activity'

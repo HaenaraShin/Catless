@@ -1,4 +1,4 @@
-package dev.haenara.apkdownstall.catless
+package dev.haenara.catless.ui
 
 import org.junit.Test
 
