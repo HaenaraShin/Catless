@@ -1,8 +1,8 @@
 package dev.haenara.catless.api
 
+import dev.haenara.catless.model.Cat
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Query
 
 interface CatApiInterface {
     @GET("v1/images/search")

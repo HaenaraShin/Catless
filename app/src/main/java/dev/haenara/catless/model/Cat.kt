@@ -1,4 +1,4 @@
-package dev.haenara.catless.api
+package dev.haenara.catless.model
 
 data class Cat (
     val id: String,

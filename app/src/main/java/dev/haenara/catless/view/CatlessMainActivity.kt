@@ -1,4 +1,4 @@
-package dev.haenara.catless.ui
+package dev.haenara.catless.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,6 +14,7 @@ class CatlessMainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
     }
 }

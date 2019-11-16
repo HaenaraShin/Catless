@@ -1,4 +1,4 @@
-package dev.haenara.catless.ui
+package dev.haenara.catless.view
 
 import org.junit.Test
 

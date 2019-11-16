@@ -1,4 +1,4 @@
-package dev.haenara.catless.ui
+package dev.haenara.catless.view
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
