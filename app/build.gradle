@@ -50,3 +50,9 @@ dependencies {
     // Data Binding
     kapt 'com.android.databinding:compiler:3.5.0'
 }
+
+
+kapt {
+    generateStubs = true
+}
+
