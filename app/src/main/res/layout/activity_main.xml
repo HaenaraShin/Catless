@@ -21,6 +21,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             recyclerViewBindingAdapter="@{mCatViewModel.catLivedata}"
+            scrollFinishedListener="@{mCatViewModel.scrollFinishedListener}"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
