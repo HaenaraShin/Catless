@@ -14,28 +14,18 @@ object CatRepository {
     private val dataSet = ArrayList<Cat>()
 
     fun getDataSet(): MutableLiveData<List<Cat>> {
-        setCats()
         val data = MutableLiveData<List<Cat>>()
         data.value = dataSet
         return data
     }
 
-    fun getDataSet(callback: ()-> Unit) {
+    fun getNewCat(callback: ()-> Unit){
+        Log.d("NEWCAT", "getting new cat")
         getCat(object: CatReceivedCallback{
             override fun onCatReceived(cat: Cat?) {
                 cat?.let {
                     dataSet.add(it)
-                }
-                callback()
-            }
-        })
-    }
-
-    private fun setCats(){
-        getCat(object: CatReceivedCallback{
-            override fun onCatReceived(cat: Cat?) {
-                cat?.let {
-                    dataSet.add(it)
+                    callback()
                 }
             }
         })

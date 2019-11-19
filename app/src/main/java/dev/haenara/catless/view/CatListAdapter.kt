@@ -57,5 +57,8 @@ class CatListAdapter(
 
 @BindingAdapter("recyclerViewBindingAdapter")
 fun setRecyclerViewBindingAdapter(view: RecyclerView, cats: MutableLiveData<List<Cat>>) {
-    view.adapter = CatListAdapter(cats.value as List<Cat>)
+    if (view.adapter == null) {
+        view.adapter = CatListAdapter(cats.value as List<Cat>)
+    }
+    view.adapter?.notifyDataSetChanged()
 }

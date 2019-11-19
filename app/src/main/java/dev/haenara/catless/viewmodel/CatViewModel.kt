@@ -9,9 +9,10 @@ class CatViewModel :ViewModel(){
     private val mCats = CatRepository.getDataSet()
     public fun getCatLivedata(): MutableLiveData<List<Cat>> = mCats
 
-    fun addCat(callback: ()-> Unit) {
-        CatRepository.getDataSet(callback)
     }
 
+    fun addCat(callback: ()-> Unit) {
+        CatRepository.getNewCat(callback)
+    }
 
 }
