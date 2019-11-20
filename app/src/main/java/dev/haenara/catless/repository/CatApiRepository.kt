@@ -24,7 +24,13 @@ object CatRepository {
         getCat(object: CatReceivedCallback{
             override fun onCatReceived(cat: Cat?) {
                 cat?.let {
-                    callback(dataSet.addCat(it))
+                    // Duplication check
+                    if (dataSet.contains(cat)) {
+                        Log.e("NEWCAT", "duplicated cat")
+                        getCat(this) // get an another cat again
+                    } else {
+                        callback(dataSet.addCat(it)) // put into data set
+                    }
                 }
             }
         })
