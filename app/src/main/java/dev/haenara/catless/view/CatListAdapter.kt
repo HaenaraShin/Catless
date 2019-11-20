@@ -1,8 +1,10 @@
 package dev.haenara.catless.view
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
@@ -33,24 +35,8 @@ class CatListAdapter(
     inner class ViewHolder(
         private val mBinding: ViewItemCatBinding
     ) : RecyclerView.ViewHolder(mBinding.root) {
-
         fun bind(item: Cat) {
-            mBinding.run {
-                ivCatImage.setImageFromUrl(item.url)
-                tvCatId.text = item.id
-                ivCatImage.setOnClickListener {
-                    // TODO show Cat Image Dialog
-                    Toast.makeText(mBinding.root.context, item.id, Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-
-        private fun ImageView.setImageFromUrl(url: String) {
-            Glide.with(mBinding.root.context)
-                .asBitmap()
-                .load(url)
-                .centerCrop()
-                .into(this)
+            mBinding.cat = item
         }
     }
 }
@@ -61,4 +47,26 @@ fun setRecyclerViewBindingAdapter(view: RecyclerView, cats: MutableLiveData<List
         view.adapter = CatListAdapter(cats.value as List<Cat>)
     }
     view.adapter?.notifyDataSetChanged()
+}
+
+@BindingAdapter("catId")
+fun setCatId(view: TextView, cat: Cat) {
+    view.text = cat.id
+}
+
+
+@BindingAdapter("catImage")
+fun setCatImage(view: ImageView, cat: Cat) {
+    view.setImageFromUrl(view.context, cat.url)
+    view.setOnClickListener {
+        Toast.makeText(view.context, cat.id, Toast.LENGTH_SHORT).show()
+    }
+}
+
+private fun ImageView.setImageFromUrl(context: Context, url: String) {
+    Glide.with(context)
+        .asBitmap()
+        .load(url)
+        .centerCrop()
+        .into(this)
 }
