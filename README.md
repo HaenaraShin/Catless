@@ -3,7 +3,7 @@
 
 **🐈 Android Sample Project with MVVM with recycler view.**
 
-## Introduce
+## Catless
 
 고양이가 없는 분들을 위한 무한 고양이 이미지 로딩 안드로이드 앱입니다. 원하는 고양이 이미지가 나올때까지 무한히 스크롤하여 계속계속 고양이 이미지를 로딩할 수 있습니다.
 
@@ -11,12 +11,12 @@
 
 - [Kotlin](https://kotlinlang.org/)
 - MVVM Architecture
-- DataBinding
+- [DataBinding](https://developer.android.com/topic/libraries/data-binding)
 - [RecyclerView](https://developer.android.com/reference/android/support/v7/widget/RecyclerView)
 - [Glide](https://github.com/bumptech/glide)
 - [Retrofit2](https://square.github.io/retrofit/)
 - [Gson](https://github.com/google/gson)
-- [TheCatApi](https://thecatapi.com/)
+- [TheCatAPI](https://thecatapi.com/)
 
 ## Check List
 
