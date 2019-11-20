@@ -10,14 +10,12 @@ class CatViewModel :ViewModel(){
     private val mCats = CatRepository.getDataSet()
     public fun getCatLivedata(): MutableLiveData<List<Cat>> = mCats
 
-    val scrollFinishedListener = object: OnScrollFinishedListener {
-        override fun onScrollFinished() {
-            addCat {  }
-        }
+    fun addCat(callback: (position: Int)-> Unit) {
+        CatRepository.getNewCat(callback)
     }
 
-    fun addCat(callback: ()-> Unit) {
-        CatRepository.getNewCat(callback)
+    fun onScrollFinished(callback: (position: Int) -> Unit) {
+        repeat(5) { addCat(callback) }
     }
 
 }

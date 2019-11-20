@@ -6,6 +6,9 @@
         <variable
             name="mCatViewModel"
             type="dev.haenara.catless.viewmodel.CatViewModel" />
+        <variable
+            name="scrollFinishedListener"
+            type="dev.haenara.catless.view.OnScrollFinishedListener" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -21,7 +24,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             recyclerViewBindingAdapter="@{mCatViewModel.catLivedata}"
-            scrollFinishedListener="@{mCatViewModel.scrollFinishedListener}"
+            scrollFinishedListener="@{scrollFinishedListener}"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

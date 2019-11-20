@@ -12,33 +12,30 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class CatlessMainActivity : AppCompatActivity() {
     lateinit var mBinding: ActivityMainBinding
-    lateinit var mCatViewModel: CatViewModel
+    private val scrollFinishedListener = object : OnScrollFinishedListener {
+        override fun onScrollFinished() {
+            mBinding.mCatViewModel?.onScrollFinished { position ->
+                notifyItemChange(position)
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        mBinding.scrollFinishedListener = scrollFinishedListener
         mBinding.lifecycleOwner = this
-        ViewModelProviders.of(this).get(CatViewModel::class.java)
-            .let{
-                mBinding.mCatViewModel = it
-                it.getCatLivedata().observe(this@CatlessMainActivity, Observer {
-                    rcv_cat_list.adapter?.notifyDataSetChanged()
-
-                })
-            }
-
-        for (i in 1..10){
-            addCat() // TO TEST
-        }
-
+        mBinding.mCatViewModel = ViewModelProviders.of(this).get(CatViewModel::class.java)
+        repeat(10) { addCat() }
     }
 
     private fun addCat() {
-        for (i in 1..3) {
-            mBinding.mCatViewModel?.addCat {
-                rcv_cat_list.adapter?.notifyDataSetChanged()
-            }
+        mBinding.mCatViewModel?.addCat { position ->
+            notifyItemChange(position)
         }
     }
 
+    private fun notifyItemChange(position: Int){
+        rcv_cat_list.adapter?.notifyItemChanged(position)
+    }
 }

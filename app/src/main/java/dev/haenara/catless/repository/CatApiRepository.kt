@@ -19,16 +19,22 @@ object CatRepository {
         return data
     }
 
-    fun getNewCat(callback: ()-> Unit){
+    fun getNewCat(callback: (position: Int)-> Unit){
         Log.d("NEWCAT", "getting new cat")
         getCat(object: CatReceivedCallback{
             override fun onCatReceived(cat: Cat?) {
                 cat?.let {
-                    dataSet.add(it)
-                    callback()
+                    callback(dataSet.addCat(it))
                 }
             }
         })
+    }
+
+    private fun ArrayList<Cat>.addCat(cat: Cat): Int{
+        synchronized(this) {
+            add(cat)
+            return lastIndex
+        }
     }
 
     private fun getCat(callback: CatReceivedCallback){
