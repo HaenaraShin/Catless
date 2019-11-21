@@ -5,6 +5,8 @@
 
 ## Catless
 
+![catless](README/img/ic_launcher.png)
+
 고양이가 없는 분들을 위한 무한 고양이 이미지 로딩 안드로이드 앱입니다. 원하는 고양이 이미지가 나올때까지 무한히 스크롤하여 계속계속 고양이 이미지를 로딩할 수 있습니다.
 
 ## Used Skill
@@ -23,11 +25,14 @@
 - [x] MVVM architectural pattern
 - [x] Data binding
 - [x] RecyclerView
-- [ ] Unit Test
-- [ ] UI Test
+- [x] Get an image url from TheCatAPI using retrofit 
+- [x] Show an cat image using Glide 
 - [ ] Show a full-sized cat image when click its thumbnail
 - [ ] Save an cat image into storage
+- [ ] Show favorite cat pictures
 - [ ] Add some sample images app running
+- [ ] Unit Test
+- [ ] UI Test
 
 ## Licence
 
