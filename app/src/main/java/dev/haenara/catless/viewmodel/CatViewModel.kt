@@ -2,9 +2,9 @@ package dev.haenara.catless.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import dev.haenara.catless.config.LOAD_MODE_CATS_NUM
 import dev.haenara.catless.model.Cat
 import dev.haenara.catless.repository.CatRepository
-import dev.haenara.catless.view.OnScrollFinishedListener
 
 class CatViewModel :ViewModel(){
     private val mCats = CatRepository.getDataSet()
@@ -15,7 +15,7 @@ class CatViewModel :ViewModel(){
     }
 
     fun onScrollFinished(callback: (position: Int) -> Unit) {
-        repeat(5) { addCat(callback) }
+        repeat(LOAD_MODE_CATS_NUM) { addCat(callback) }
     }
 
 }

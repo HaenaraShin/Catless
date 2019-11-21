@@ -1,11 +1,12 @@
 package dev.haenara.catless.api
 
+import dev.haenara.catless.config.THE_CAT_API_URL
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object CatRetrofit {
     private val retrofit = Retrofit.Builder()
-        .baseUrl("https://api.thecatapi.com/")
+        .baseUrl(THE_CAT_API_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
