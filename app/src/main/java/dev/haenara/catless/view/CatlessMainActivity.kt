@@ -8,15 +8,12 @@ import dev.haenara.catless.R
 import dev.haenara.catless.config.INITIAL_CATS_NUM
 import dev.haenara.catless.databinding.ActivityMainBinding
 import dev.haenara.catless.viewmodel.CatViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 
 class CatlessMainActivity : AppCompatActivity() {
     lateinit var mBinding: ActivityMainBinding
     private val scrollFinishedListener = object : OnScrollFinishedListener {
         override fun onScrollFinished() {
-            mBinding.mCatViewModel?.onScrollFinished { position ->
-                notifyItemChange(position)
-            }
+            mBinding.mCatViewModel?.onScrollFinished()
         }
     }
 
@@ -30,12 +27,6 @@ class CatlessMainActivity : AppCompatActivity() {
     }
 
     private fun addCat() {
-        mBinding.mCatViewModel?.addCat { position ->
-            notifyItemChange(position)
-        }
-    }
-
-    private fun notifyItemChange(position: Int){
-        rcv_cat_list.adapter?.notifyItemChanged(position)
+        mBinding.mCatViewModel?.addCat()
     }
 }

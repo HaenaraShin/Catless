@@ -8,17 +8,17 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import dev.haenara.catless.R
 import dev.haenara.catless.databinding.ViewItemCatBinding
 import dev.haenara.catless.model.Cat
+import dev.haenara.catless.viewmodel.CatViewModel
 
 class CatListAdapter(
-    private val cats : List<Cat>
-) : RecyclerView.Adapter<CatListAdapter.ViewHolder>() {
-
+    private val cats: List<Cat>
+) : RecyclerView.Adapter<CatListAdapter.ViewHolder>(),
+    CatApiObserver {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
         DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
@@ -39,12 +39,21 @@ class CatListAdapter(
             mBinding.cat = item
         }
     }
+
+    override fun update(index: Int) {
+        if (index < 0) {
+            notifyDataSetChanged()
+        } else {
+            notifyItemChanged(index)
+        }
+    }
 }
 
 @BindingAdapter("recyclerViewBindingAdapter")
-fun setRecyclerViewBindingAdapter(view: RecyclerView, cats: MutableLiveData<List<Cat>>) {
+fun setRecyclerViewBindingAdapter(view: RecyclerView, viewModel: CatViewModel) {
     if (view.adapter == null) {
-        view.adapter = CatListAdapter(cats.value as List<Cat>)
+        view.adapter = CatListAdapter(viewModel.getCatLivedata().value as List<Cat>)
+            .apply { viewModel.addObserver(this) }
     }
     view.adapter?.notifyDataSetChanged()
 }
@@ -68,5 +77,6 @@ private fun ImageView.setImageFromUrl(context: Context, url: String) {
         .asBitmap()
         .load(url)
         .centerCrop()
+        .thumbnail()
         .into(this)
 }

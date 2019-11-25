@@ -13,4 +13,12 @@ data class Cat(
             false
         }
     }
+
+    override fun hashCode(): Int {
+        var result = id.hashCode()
+        result = 31 * result + url.hashCode()
+        result = 31 * result + width
+        result = 31 * result + height
+        return result
+    }
 }
