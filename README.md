@@ -5,7 +5,7 @@
 
 ## Catless
 
-![catless](README/img/ic_launcher.png)
+![catless](icon.png)
 
 고양이가 없는 분들을 위한 무한 고양이 이미지 로딩 안드로이드 앱입니다. 원하는 고양이 이미지가 나올때까지 무한히 스크롤하여 계속계속 고양이 이미지를 로딩할 수 있습니다.
 
